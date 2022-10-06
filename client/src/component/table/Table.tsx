@@ -4,8 +4,9 @@ import { sortType } from '../../@types/enum';
 import { ITableElement } from '../../@types/ITableElement';
 import { useHttp } from '../../hook/http.hook';
 import pagination_states from '../../store/pagination_states';
-import sort_states from '../../store/sort_states';
+import filtration_states from '../../store/filtration_states';
 import creating_page_elements from '../creating_page_elements';
+import date_conversion from '../date_conversion';
 
 import styles from './table.module.scss'
 
@@ -17,19 +18,14 @@ const Table = observer(() => {
     const [pageElement, setPageElement] = React.useState<ITableElement[]>([])
 
 
-    
-    
-
-
-
     function table_loading() {
-        let sort_options = sort_states.column + ' ' + sort_states.conditions
+        let sort_options = filtration_states.column + ' ' + filtration_states.conditions
 
         // name
         
         if(sortType.Title_Equals === sort_options) {
             request('/api/filter/title-equals', 'POST', {
-                text_field: sort_states.text_field
+                text_field: filtration_states.text_field
             }).then((value) => {
                 setTableElement(value)
             })
@@ -37,7 +33,7 @@ const Table = observer(() => {
 
         if(sortType.Title_Contains === sort_options) {
             request('/api/filter/title-contains', 'POST', {
-                text_field: sort_states.text_field
+                text_field: filtration_states.text_field
             }).then((value) => {
                 setTableElement(value)
             })
@@ -45,7 +41,7 @@ const Table = observer(() => {
             
         if(sortType.Title_More === sort_options) {
             request('/api/filter/title-more', 'POST', {
-                text_field_length: (sort_states.text_field).length
+                text_field_length: (filtration_states.text_field).length
             }).then((value) => {
                 setTableElement(value)
             })
@@ -53,7 +49,7 @@ const Table = observer(() => {
 
         if(sortType.Title_Less === sort_options) {
             request('/api/filter/title-less', 'POST', {
-                text_field_length: (sort_states.text_field).length
+                text_field_length: (filtration_states.text_field).length
             }).then((value) => {
                 setTableElement(value)
             })
@@ -64,7 +60,7 @@ const Table = observer(() => {
 
         if(sortType.Quantility_Equals === sort_options) {
             request('/api/filter/quantility-equals', 'POST', {
-                text_field: sort_states.text_field
+                text_field: filtration_states.text_field
             }).then((value) => {
                 setTableElement(value)
             })
@@ -72,7 +68,7 @@ const Table = observer(() => {
         
         if(sortType.Quantility_Contains === sort_options) {
             request('/api/filter/quantility-contains', 'POST', {
-                text_field: (Number(sort_states.text_field))
+                text_field: (Number(filtration_states.text_field))
             }).then((value) => {
                 setTableElement(value)
             })
@@ -80,7 +76,7 @@ const Table = observer(() => {
             
         if(sortType.Quantility_More === sort_options) {
             request('/api/filter/quantility-more', 'POST', {
-                text_field: sort_states.text_field
+                text_field: filtration_states.text_field
             }).then((value) => {
                 setTableElement(value)
             })
@@ -88,7 +84,7 @@ const Table = observer(() => {
 
         if(sortType.Quantility_Less === sort_options) {
             request('/api/filter/quantility-less', 'POST', {
-                text_field: sort_states.text_field
+                text_field: filtration_states.text_field
             }).then((value) => {
                 setTableElement(value)
             })
@@ -99,7 +95,7 @@ const Table = observer(() => {
 
         if(sortType.Quantility_Equals === sort_options) {
             request('/api/filter/quantility-equals', 'POST', {
-                text_field: sort_states.text_field
+                text_field: filtration_states.text_field
             }).then((value) => {
                 setTableElement(value)
             })
@@ -107,7 +103,7 @@ const Table = observer(() => {
         
         if(sortType.Quantility_Contains === sort_options) {
             request('/api/filter/quantility-contains', 'POST', {
-                text_field: (Number(sort_states.text_field))
+                text_field: (Number(filtration_states.text_field))
             }).then((value) => {
                 setTableElement(value)
             })
@@ -115,7 +111,7 @@ const Table = observer(() => {
             
         if(sortType.Quantility_More === sort_options) {
             request('/api/filter/quantility-more', 'POST', {
-                text_field: sort_states.text_field
+                text_field: filtration_states.text_field
             }).then((value) => {
                 setTableElement(value)
             })
@@ -123,7 +119,7 @@ const Table = observer(() => {
 
         if(sortType.Quantility_Less === sort_options) {
             request('/api/filter/quantility-less', 'POST', {
-                text_field: sort_states.text_field
+                text_field: filtration_states.text_field
             }).then((value) => {
                 setTableElement(value)
             })
@@ -134,7 +130,7 @@ const Table = observer(() => {
 
         if(sortType.Distance_Equals === sort_options) {
             request('/api/filter/distance-equals', 'POST', {
-                text_field: sort_states.text_field
+                text_field: filtration_states.text_field
             }).then((value) => {
                 setTableElement(value)
             })
@@ -142,7 +138,7 @@ const Table = observer(() => {
         
         if(sortType.Distance_Contains === sort_options) {
             request('/api/filter/distance-contains', 'POST', {
-                text_field: (Number(sort_states.text_field))
+                text_field: (Number(filtration_states.text_field))
             }).then((value) => {
                 setTableElement(value)
             })
@@ -150,7 +146,7 @@ const Table = observer(() => {
             
         if(sortType.Distance_More === sort_options) {
             request('/api/filter/distance-more', 'POST', {
-                text_field: sort_states.text_field
+                text_field: filtration_states.text_field
             }).then((value) => {
                 setTableElement(value)
             })
@@ -158,21 +154,21 @@ const Table = observer(() => {
 
         if(sortType.Distance_Less === sort_options) {
             request('/api/filter/distance-less', 'POST', {
-                text_field: sort_states.text_field
+                text_field: filtration_states.text_field
             }).then((value) => {
                 setTableElement(value)
             })
         }
 
 
-        if(sort_states.state) {
-            sort_states.state_change()
+        if(filtration_states.state) {
+            filtration_states.state_change()
         }
     }
 
     React.useEffect(function(){
         request('/api/filter/title-contains', 'POST', {
-            text_field: sort_states.text_field
+            text_field: filtration_states.text_field
         }).then((value) => {
             setTableElement(value)
         })
@@ -180,15 +176,15 @@ const Table = observer(() => {
 
     React.useEffect(function(){
         setPageElement(creating_page_elements(tableElement))
-    }, [tableElement, pagination_states.active_page, sort_states.state])
+    }, [tableElement, pagination_states.active_page, filtration_states.state])
 
     
     React.useEffect(function(){
-        if(sort_states.state === true) {
+        if(filtration_states.state === true) {
             table_loading()
-            sort_states.state_change()
+            filtration_states.state_change()
         }
-    }, [sort_states.state])
+    }, [filtration_states.state])
 
 
 
@@ -223,20 +219,3 @@ const Table = observer(() => {
 })
 
 export default Table;
-
-
-function date_conversion(date: string) {
-    let arr_month = [
-        "Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля",
-        "Августа", "Сентября", "Октября", "Ноября", "Декабря"
-    ]
-
-    let main_date: Date = new Date(date)
-
-
-    return (
-        main_date.getFullYear() +  " год " +
-        main_date.getDate() + " " +
-        arr_month[main_date.getMonth()]
-    )
-}

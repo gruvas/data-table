@@ -6,7 +6,7 @@ import Dropdown from '../../component/dropdown/Dropdown';
 import Table from '../../component/table/Table';
 import Input from '../../component/input/Input';
 import { observer } from 'mobx-react-lite';
-import sort_states from '../../store/sort_states';
+import filtration_states from '../../store/filtration_states';
 import CreateEntry from '../../component/CreateEntry/CreateEntry';
 import Pagination from '../../component/Pagination/Pagination';
 import pagination_states from '../../store/pagination_states';
@@ -17,7 +17,7 @@ const Container = observer(() => {
     let arr_column = ['Название', 'Количество', 'Расстояние']
 
     function search() {
-        sort_states.state_change()
+        filtration_states.state_change()
         pagination_states.change_active_page(0)
     }
     
@@ -28,8 +28,8 @@ const Container = observer(() => {
             
             <div className={styles.table_container}>
                 <div className={styles.filter}>
-                    <Dropdown active={sort_states.column} list={arr_column} title='колонки'/>
-                    <Dropdown active={sort_states.conditions} list={arr_conditions} title='условия'/>
+                    <Dropdown active={filtration_states.column} list={arr_column} title='колонки'/>
+                    <Dropdown active={filtration_states.conditions} list={arr_conditions} title='условия'/>
                 </div>
 
                 <div className={styles.central_block}>

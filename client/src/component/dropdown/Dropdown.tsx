@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './styles.module.scss'
 
 import arrow from '../../img/arrow_down.svg'
-import sort_states from '../../store/sort_states';
+import filtration_states from '../../store/filtration_states';
 import { IDropdownProps } from '../../@types/IDropdownProps';
 
 
@@ -28,9 +28,9 @@ const Dropdown = (props: IDropdownProps) => {
 
     React.useEffect(() => {
         if(title === 'колонки') {
-            sort_states.change_column(value)
+            filtration_states.change_column(value)
         } else if(title === 'условия') {
-            sort_states.change_conditions(value)
+            filtration_states.change_conditions(value)
         }
     }, [value])
 

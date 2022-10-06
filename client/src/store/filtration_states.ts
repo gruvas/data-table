@@ -1,10 +1,9 @@
 import { makeAutoObservable } from "mobx"
-import { sortStatesType } from "../@types/enum"
 
-
-class sort_states {
+class filtration_states {
     column = 'Название'
-    type = 'Больше'
+    conditions = 'Содержит'
+    text_field = ''
 
     state = false
 
@@ -16,17 +15,17 @@ class sort_states {
         this.column = name_column
     }
 
-    change_type() {
-        if(this.type === sortStatesType.Less) {
-            this.type = sortStatesType.More
-        } else {
-            this.type = sortStatesType.Less
-        }
+    change_conditions(name_conditions: string) {
+        this.conditions = name_conditions
     }
 
+    change_text_field(name_text_field: string) {
+        this.text_field = name_text_field
+    }
+    
     state_change() {
         this.state = !this.state
     }
 }
 
-export default new sort_states()
+export default new filtration_states()

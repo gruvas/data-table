@@ -1,13 +1,13 @@
 import React from 'react';
 
 import search_img from '../../img/search.svg'
-import sort_states from '../../store/sort_states';
+import filtration_states from '../../store/filtration_states';
 
 const Input = () => {
     const [text, setText] = React.useState('')
 
     React.useEffect(() => {
-        sort_states.change_text_field(text)
+        filtration_states.change_text_field(text)
     }, [text])
 
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHttp } from '../../hook/http.hook';
 import pagination_states from '../../store/pagination_states';
-import sort_states from '../../store/sort_states';
+import filtration_states from '../../store/filtration_states';
 import numeric_dot_field_validation from '../../validation/numeric_dot_field_validation';
 import numeric_field_validation from '../../validation/numeric_field_validation';
 import repeating_dot_validation from '../../validation/repeating_dot_validation';
@@ -32,7 +32,7 @@ const CreateEntry = () => {
                     distance: distance.current!.value
                 })
 
-                sort_states.state_change()
+                filtration_states.state_change()
                 pagination_states.change_active_page(0)
             } else {
                 alert('Необходимо заполнить все поля')

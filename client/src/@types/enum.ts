@@ -15,3 +15,14 @@ export enum sortType {
     Distance_More = 'Расстояние Больше',
     Distance_Less  = 'Расстояние Меньше'
 }
+
+export enum sortStatesType {
+    More = "Больше",
+    Less = "Меньше"
+}
+
+export enum sortStatesColumn {
+    Name = "Название",
+    Quantity = "Количество",
+    Distance = "Расстояние"
+}
