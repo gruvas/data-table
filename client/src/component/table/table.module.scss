@@ -1,0 +1,32 @@
+.table {
+    min-width: 400px;
+    min-height: 190px;
+
+    table {
+        border: 1px solid black;
+        border-radius: 15px;
+
+        margin: auto;
+    }
+
+
+    tr {
+        th {
+            text-align: center;
+
+            padding: 9px;
+        }
+
+
+        td {
+            text-align: center;
+
+            padding: 9px;
+        }
+
+        .name {
+            max-width: 190px;
+            overflow-wrap: break-word;
+        }
+    }
+}

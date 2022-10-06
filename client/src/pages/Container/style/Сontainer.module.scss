@@ -1,0 +1,38 @@
+.header {
+    text-align: center;
+
+    margin-top: 25px;
+
+    font-size: 26px;
+}
+
+
+.table_container {
+    display: block;
+
+    margin-top: 25px;
+
+    justify-content: space-around;
+}
+
+.filter {
+    display: flex;
+
+    margin-bottom: 25px;
+}
+
+.central_block {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px;
+
+    margin-bottom: 25px;
+}
+
