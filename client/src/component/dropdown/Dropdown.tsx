@@ -4,10 +4,10 @@ import styles from './styles.module.scss'
 
 import arrow from '../../img/arrow_down.svg'
 import sort_states from '../../store/sort_states';
+import { IDropdownProps } from '../../@types/IDropdownProps';
 
 
-
-const Dropdown = (props: any) => {
+const Dropdown = (props: IDropdownProps) => {
     // Массив находящийся в нутри dropdown
     const list = props.list
 
@@ -19,6 +19,7 @@ const Dropdown = (props: any) => {
 
     // Открытие, закрытие dropdown
     const [open, setOpen] = React.useState(false)
+    
     function change_open() {
         setOpen(!open)
     }
@@ -46,7 +47,7 @@ const Dropdown = (props: any) => {
 
             {open &&
                 <div className={styles.dropdown_border}>
-                    {list.map((item: any, index: number) =>
+                    {list.map((item: string, index: number) =>
                         <p onClick={() => setValue(item)} key={item + index}>{item}</p>
                     )}
                 </div>
