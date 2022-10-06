@@ -6,8 +6,6 @@ class sort_states {
     column = 'Название'
     type = 'Больше'
 
-    state = false
-
     constructor() {
         makeAutoObservable(this)
     }
@@ -22,10 +20,6 @@ class sort_states {
         } else {
             this.type = sortStatesType.Less
         }
-    }
-
-    state_change() {
-        this.state = !this.state
     }
 }
 

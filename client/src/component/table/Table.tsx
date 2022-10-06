@@ -7,8 +7,9 @@ import pagination_states from '../../store/pagination_states';
 import filtration_states from '../../store/filtration_states';
 import creating_page_elements from '../creating_page_elements';
 import date_conversion from '../date_conversion';
-
 import styles from './table.module.scss'
+import sort_state_change from '../sort_state_change';
+import sort_states from '../../store/sort_states'
 
 
 const Table = observer(() => {
@@ -56,7 +57,7 @@ const Table = observer(() => {
         }
 
 
-        // quantity
+        // quantility
 
         if(sortType.Quantility_Equals === sort_options) {
             request('/api/filter/quantility-equals', 'POST', {
@@ -176,7 +177,9 @@ const Table = observer(() => {
 
     React.useEffect(function(){
         setPageElement(creating_page_elements(tableElement))
-    }, [tableElement, pagination_states.active_page, filtration_states.state])
+    }, [tableElement, pagination_states.active_page, 
+        filtration_states.state, sort_states.column, 
+        sort_states.type])
 
     
     React.useEffect(function(){
@@ -185,8 +188,7 @@ const Table = observer(() => {
             filtration_states.state_change()
         }
     }, [filtration_states.state])
-
-
+    
 
 
     return (
@@ -196,9 +198,9 @@ const Table = observer(() => {
                     <>
                         <tr>
                             <th>Дата</th>
-                            <th>Название</th>
-                            <th>Количество</th>
-                            <th>Расстояние</th>
+                            <th className={styles.clickable} onClick={() => sort_state_change('Название')}>Название</th>
+                            <th className={styles.clickable} onClick={() => sort_state_change('Количество')}>Количество</th>
+                            <th className={styles.clickable} onClick={() => sort_state_change('Расстояние')}>Расстояние</th>
                         </tr>
 
                         {pageElement.map((element, index) => {

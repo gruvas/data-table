@@ -23,6 +23,6 @@ export enum sortStatesType {
 
 export enum sortStatesColumn {
     Name = "Название",
-    Quantity = "Количество",
+    Quantility = "Количество",
     Distance = "Расстояние"
 }
